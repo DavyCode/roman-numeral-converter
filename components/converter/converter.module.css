@@ -35,6 +35,11 @@
   margin-bottom: 0;
 }
 
+.info {
+  color: hsl(184, 75%, 35%);
+  margin-bottom: 0;
+}
+
 .result {
   display: inline-block;
   vertical-align: middle;
