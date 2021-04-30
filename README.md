@@ -8,7 +8,9 @@ Modern Roman numerals are written by expressing each digit separately starting w
 
 ---
 
-![Screen Shot](https://github.com/DavyCode/roman-numeral-converter/tree/main/screenshots/Screen-Shot.png)
+<div align="center">
+  <img src="screenshots/Screen-Shot.png"><br>
+</div>
 
 ---
 
