@@ -1,7 +1,7 @@
 import React, { Fragment, useState, useRef, useEffect }  from 'react';
 import classes from './converter.module.css';
 import RomanNumerals from '../../helpers/RomanNumerals';
-console.log({RomanNumerals})
+
 function Converter () {
   const [errorNumMsg, setErrorNumMsg] = useState(null);
   const [errorRomMsg, setErrorRomMsg] = useState(null);
@@ -11,16 +11,6 @@ function Converter () {
   const numInputRef = useRef<HTMLInputElement>(null);
   const romInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    console.log({ useEffect: numInputRef.current.value})
-    setErrorNumMsg(null)
-
-    // if(errorNumMsg) {
-    //   setNumInput(null);
-    // }
-  }, [])
-  console.log({numInput})
-  console.log({romInput})
   function handleNumInputChange() {
     if (numInputRef.current && numInputRef.current.value) {
       const input: string = numInputRef.current.value;
@@ -43,16 +33,14 @@ function Converter () {
   }
   function handleRomInputChange() {
     if (romInputRef.current && romInputRef.current.value) {
-      const input: string = numInputRef.current.value;
-      if (!isNaN(Number(input))){
-        setErrorRomMsg('Number is not allowed');
-        return        
+      const input: any = romInputRef.current.value;
+      if (isNaN(input)){
+        setRomInput(String(input));
+        setErrorRomMsg(null);
       }
-      //TODO- Validate here
-      // if () {
-
-
-      // }
+      else {
+        setErrorRomMsg('Number is not allowed');
+      }
     }
     else {
       setRomInput(null);
@@ -66,6 +54,14 @@ function Converter () {
       return (<p className={classes.result}>={romanResult}</p>)
     }
     return (<p className={classes.placeholder}>=MCMXC</p>)
+  }
+
+  function convertToNum() {
+    if (romInput) {
+      const numResult: number = RomanNumerals.fromRoman(romInput);
+      return (<p className={classes.result}>={numResult}</p>)
+    }
+    return (<p className={classes.placeholder}>=2020</p>);
   }
   return (
     <Fragment>
@@ -92,7 +88,7 @@ function Converter () {
           )
         } 
         <input className="text-input" type="text" placeholder="MMXX" ref={romInputRef} onChange={handleRomInputChange}/>
-        <p className={classes.result}>= 2020 -- {romInput}</p>
+        {convertToNum()}
       </section>
     </Fragment>
   );
