@@ -1,6 +1,7 @@
 class RomanNumerals {
 	/*
 	 * toRoman
+	 * Converts Number to Roman Numeral
 	 * @param {number} position - an integer greater than -1
 	 *
 	 * @returns {String}
@@ -36,6 +37,17 @@ class RomanNumerals {
 		return rNumeral;
 	}
 
+	/*
+	 * fromRoman
+	 * Converts Roman Numeral to Number
+	 * @param {string} position - an character string
+	 *
+	 * @returns {Number}
+	 *
+	 * @example {MMXX} returns 2020
+	 * @example {MX} return 1010
+	 *
+	 */
 	fromRoman(roman: string) {
 		let numResult = 0;
 		let romanStrings = roman.toLocaleUpperCase();
